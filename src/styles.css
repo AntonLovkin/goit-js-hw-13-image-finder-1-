@@ -18,3 +18,27 @@ body {
    */
   background-image: url('./images/bg-pattern.png');
 }
+
+.gallery {
+  list-style: none;
+}
+
+.photo-card {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+.item {
+  margin-left: 10px;
+  margin-top: 10px;
+  flex-basis: calc(100% / 3 - 10px);
+}
+
+/* .stats-item {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 14px;
+} */
