@@ -9,7 +9,7 @@ export default class NewApiService {
         const API_KEY = '21271693-9f15050c6f3761d48e024dcb2';
         const BASE_URL = 'https://pixabay.com/';
       
-    return fetch(`${BASE_URL}api/?image_type=photo&orientation=horizontal&q=cat&page=${this.page}&per_page=12&key=${API_KEY}`)
+    return fetch(`${BASE_URL}api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`)
             .then(r => r.json())
             .then(data => {
                 console.log(data);

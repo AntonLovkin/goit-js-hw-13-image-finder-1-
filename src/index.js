@@ -17,6 +17,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 function onSearch(el) {
     el.preventDefault();
     
+    clearHitsContainer();
     newApiService.query = el.currentTarget.elements.query.value;
     
     newApiService.resetPage();
@@ -26,12 +27,18 @@ function onSearch(el) {
     function onLoadMore() {
         newApiService.fetchArticles().then(appendHitsMarcup);
         window.scrollTo({
-    top: 1200,
-    behavior: "behavior"
-});
+            left: 0,
+            top: 2200,
+            behavior: 'smooth'
+        });
+       
 };
 
 function appendHitsMarcup(hits) {
     refs.galleryContainer.insertAdjacentHTML('beforeend', hitsTpl(hits))
+};
+
+function clearHitsContainer() {
+    refs.galleryContainer.innerHTML = '';
 }
 
