@@ -30,18 +30,21 @@ function onSearch(el) {
     });
     refs.loadMoreBtn.removeAttribute("disabled");
 }
-    
+
 
 
 function onLoadMore() {
+    const scrollValue = document.documentElement.scrollHeight;
+    console.log(scrollValue);
+    
         newApiService.fetchArticles().then(appendHitsMarcup);
-        
-        // window.scrollTo({
-        //     left: 0,
-        //     top: 2200,
-        //     behavior: 'smooth'
-        // });
-                 
+     setTimeout(() => {
+         window.scrollTo({
+            left: 0,
+            top: scrollValue,
+            behavior: 'smooth'
+        });   
+        }, 500)              
 };
 
 function appendHitsMarcup(hits) {
