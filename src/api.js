@@ -4,19 +4,19 @@ export default class NewApiService {
         this.page = 1;
     }
     
-    fetchArticles() {
-                    
+    fetchArticles() {          
         const API_KEY = '21271693-9f15050c6f3761d48e024dcb2';
         const BASE_URL = 'https://pixabay.com/';
       
     return fetch(`${BASE_URL}api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`)
-            .then(r => r.json())
+            .then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.page += 1;
-                
                 return data.hits;
-            });
+            })
+            .catch(
+                console.log()
+            )
     }
 
     resetPage() {

@@ -16,22 +16,32 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 function onSearch(el) {
     el.preventDefault();
-    
-    clearHitsContainer();
+
     newApiService.query = el.currentTarget.elements.query.value;
     
-    newApiService.resetPage();
-    newApiService.fetchArticles().then(appendHitsMarcup);
+    if (newApiService.query === '') {
+        return alert("TRY SEARCH FORM!!!")
+    } 
         
+    newApiService.resetPage();
+    newApiService.fetchArticles().then(hits => {
+        clearHitsContainer();
+        appendHitsMarcup(hits);
+    });
+    refs.loadMoreBtn.removeAttribute("disabled");
 }
-    function onLoadMore() {
+    
+
+
+function onLoadMore() {
         newApiService.fetchArticles().then(appendHitsMarcup);
-        window.scrollTo({
-            left: 0,
-            top: 2200,
-            behavior: 'smooth'
-        });
-       
+        
+        // window.scrollTo({
+        //     left: 0,
+        //     top: 2200,
+        //     behavior: 'smooth'
+        // });
+                 
 };
 
 function appendHitsMarcup(hits) {
@@ -40,5 +50,5 @@ function appendHitsMarcup(hits) {
 
 function clearHitsContainer() {
     refs.galleryContainer.innerHTML = '';
-}
+};
 
