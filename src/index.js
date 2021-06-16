@@ -6,6 +6,7 @@ const refs = {
     searchForm: document.querySelector('.js-search-form'),
     galleryContainer: document.querySelector('.js-gallery'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+    imageClick: document.querySelector('.photo-card'),
 }
 
 const newApiService = new NewApiService();
@@ -30,8 +31,6 @@ function onSearch(el) {
     });
     refs.loadMoreBtn.removeAttribute("disabled");
 }
-
-
 
 function onLoadMore() {
     const scrollValue = document.documentElement.scrollHeight;
